@@ -21,7 +21,7 @@ $(function() {
     // If selection is a known keyword, show the tooltip
     if (_.includes(keywords, txt)) {
       $('div#tooltip').append(
-        '<div class="panel panel-default"><div id="tip-body" class="panel-body"><b>!</b></div>');
+        '<div class="card"><div id="tip-body" style="margin: 1px 5px"><b>!</b></div></div>');
 
       $('div#tooltip').hover(function() {
         $(this).find('div#tip-body').html(tooltips[txt])

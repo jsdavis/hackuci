@@ -1,4 +1,4 @@
-function sleep(ms) {
+	function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
@@ -8,11 +8,9 @@ async function demo() {
   console.log('Two second later');
 }
 
-$(document).ready(function() {
-	$("#input").attr("readonly", "true");
-	$("#input").on("keydown", function(e) {
-		autosize(this);
-	});
+$("#input").attr("readonly", "true");
+$("#input").on("keydown", function(e) {
+	autosize(this);
 });
 
 function autosize(el) {
@@ -37,7 +35,7 @@ repl.connect().then(
 function run() {
 	//$("#input").attr("readonly", "false");
 	var x = repl.evaluate(document.getElementById("codeTxt").value, {
-	                stdout: function(str) {	
+	                stdout: function(str) {
 	                    document.getElementById('console').innerHTML += str + '\n';
 	                }
 	             }).then(

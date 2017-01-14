@@ -1,37 +1,47 @@
-function getLessonNum(lessonObject) {
-	return lessonObject.lesson.id;
+var lesson = lessons[0];
+
+function setLesson(num) {
+	lesson = lessons[num];
 }
 
-function getLessonLanguage(lessonObject) {
-	return lessonObject.lesson.language;
+function getLessonNum() {
+	return lesson.lesson.id;
 }
 
-function getLessonTitle(lessonObject) {
-	return lessonObject.lesson.title;
+function getLessonLanguage() {
+	return lesson.lesson.language;
 }
 
-function getSteps(lessonObject) {
+function getLessonTitle() {
+	return lesson.lesson.title;
+}
+
+function getSteps() {
 	var stepsString = "Steps: <br>"
 	var n = 1;
-	for (x in lessonObject.lesson.steps) {
-		stepsString += n + ". " + lessonObject.lesson.steps[x] + "<br>";
+	for (x in lesson.lesson.steps) {
+		stepsString += n + ". " + lesson.lesson.steps[x] + "<br>";
 		n++;
 	}
 	return stepsString;
 }
 
-function getExpectedResult(lessonObject) {
-	return lessonObject.lesson.expectedResult;
+function getSkeleton() {
+	return lesson.lesson.skeleton;
+}
+
+function getExpectedResult() {
+	return lesson.lesson.expectedResult;
 }
 
 function getExpectedResult(successMessage) {
-	return lessonObject.lesson.successMessage;
+	return lesson.lesson.successMessage;
 }
 
-function getException(lessonObject) {
-	return lessonObject.lesson.exceptionFeedback.exception;
+function getException() {
+	return lesson.lesson.exceptionFeedback.exception;
 }
 
-function getSyntaxError(lessonObject) {
-	return lessonObject.lesson.exceptionFeedback.syntaxError;
+function getSyntaxError() {
+	return lesson.lesson.exceptionFeedback.syntaxError;
 }

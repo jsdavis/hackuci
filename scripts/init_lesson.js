@@ -13,14 +13,14 @@ function generateOutput(output) {
 
 	var expected = getExpectedResult();
 	result.correct = expected instanceof RegExp ?
-		expected.test(output) : expected === output; 
+		expected.test(output) : expected === output;
 
 	if (!result.correct) {
 		var errors = Object.keys(getExceptionFeedback());
 		_.remove(errors, function(err) {
 			return _.includes(output, err);
 		});
-	
+
 		result.output = "";
 		errors.forEach(function(err) {
 			result.output += getExceptionFeedback()[err] + "<br>";
@@ -44,7 +44,7 @@ function next_lesson() {
 		return;
 	}
 	else {
-		setLesson(nextLessonNum - 1);
+		init_lesson(nextLessonNum - 1);
 		console.log("Lesson changed to " + nextLessonNum);
 		return;
 	}

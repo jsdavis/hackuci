@@ -21,7 +21,7 @@ function getLessonTitle() {
 }
 
 function getSteps() {
-	var stepsString = "Steps: <br>"
+	var stepsString = "<u>Steps:</u> <br>"
 	var n = 1;
 	for (x in lesson.lesson.steps) {
 		stepsString += n + ". " + lesson.lesson.steps[x] + "<br>";

@@ -4,7 +4,7 @@ var tooltips = {'function': 'function tooltip'};
 var keywords = Object.keys(tooltips);
 
 // Initialize the lesson
-init_lesson(1);
+init_lesson(0);
 
 // Initialize ace editor
 var editor = ace.edit("editor");

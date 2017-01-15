@@ -22,6 +22,11 @@
   background-color: #d3a75e !important;
 }
 
+#tooltip em {
+  font-style: normal;
+  background-color: #8b9e63;
+}
+
 .ace-twilight .ace_fold {
   border-color: #e0e0e0!important;
 }

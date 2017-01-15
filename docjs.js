@@ -86,7 +86,7 @@ repl.connect().then(
 
 function run() {
 	// get string from editor
-	var code = document.getElementById("codeTxt").value;
+	var code = session.getDocument().getValue();
 	
 	// get count
 	count = (code.match('input\(.*\)') || []).length;

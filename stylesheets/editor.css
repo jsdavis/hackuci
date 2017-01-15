@@ -2,12 +2,15 @@
   width: 95%;
   height: 100%;
   font-color: black!important;
+  font-weight: 400;
 }
 
 #tooltip {
   position: absolute;
   z-index: 100000;
   opacity: 0.3;
+  max-width: 60%;
+  font-weight: 400;
 }
 
 #tooltip:hover {

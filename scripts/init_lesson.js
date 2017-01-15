@@ -29,8 +29,13 @@ function generateOutput(output) {
 			result.output += getExceptionFeedback()[err] + "<br>";
 		});
 
-		if (!result.output)
+		if (!result.output && !_.includes(output.toLowerCase(), 'traceback')) {
 			result.output = "Not quite! Try again.";
+		}
+		else {
+			result.output = output;
+		}
+
 	}
 
 	else

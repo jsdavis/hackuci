@@ -120,7 +120,13 @@ function run() {
 
 	      var data = result.error ? result.error : rawOutput;
 
-	      var output = generateOutput(code, data);
+	      var error = false;
+
+	      if(result.error) {
+	      	error = true;
+	      }
+
+	      var output = generateOutput(code, data, error);
 
 	      // Need to know correctness for moving on to next lesson
 	      if (output.correct)

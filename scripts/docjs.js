@@ -117,8 +117,10 @@ function run() {
 			 */
 
 			var data = result.error ? result.error : rawOutput;
+			var output;
+			console.log(data);
 
-		  var output = generateOutput(data);
+			output = generateOutput(data);
 
 		  // Need to know correctness for moving on to next lesson
 		  if (output.correct)

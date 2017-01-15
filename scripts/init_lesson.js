@@ -67,8 +67,14 @@ function generateOutput(input, output, syntaxErr) {
 
 	}
 
-	else
-		result.output = getSuccessMessage();
+	else {
+		if(result.correct) {
+					result.output = getSuccessMessage();
+		}
+		else {
+			result.output = "Not quite! Try again.";
+		}
+	}
 
 	return result;
 }

@@ -11,7 +11,7 @@ function init_lesson(num) {
 }
 
 function generateOutput(output) {
-	console.log("HERE: " + output + "\n")
+	console.log("HERE: " + output + "\n");
 	var result = {};
 
 	var expected = getExpectedResult();
@@ -21,7 +21,7 @@ function generateOutput(output) {
 	if (!result.correct) {
 		var errors = Object.keys(getExceptionFeedback());
 		_.remove(errors, function(err) {
-			return _.includes(output, err);
+			return !_.includes(output.toLowerCase(), err.toLowerCase());
 		});
 
 		result.output = "";

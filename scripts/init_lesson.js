@@ -10,7 +10,7 @@ function init_lesson(num) {
   setFullTips(_.merge({}, getLangTips(), getLessonTips()));
 }
 
-function generateOutput(input, output) {
+function generateOutput(input, output, syntaxErr) {
 	console.log("HERE: " + output + "\n")
 	var result = {};
 
@@ -36,11 +36,13 @@ function generateOutput(input, output) {
 	}
 
 	if (getExpectedResult() != null) {
+
 		var expected = getExpectedResult();
 		result.correct = expected instanceof RegExp ?
 			expected.test(output) : expected === output; 
+
 	}
-	if (!result.correct) {
+	if (syntaxErr) {
 
 		var errors = Object.keys(getExceptionFeedback());
 		_.remove(errors, function(err) {

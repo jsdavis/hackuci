@@ -86,6 +86,8 @@ repl.connect().then(
 );
 
 function run() {
+	rawOutput = "";
+
 	// get string from editor
 	var code = session.getDocument().getValue();
 	

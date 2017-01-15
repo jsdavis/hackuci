@@ -104,38 +104,37 @@ function run() {
 	document.getElementById('console').innerHTML = ">>  ";
 
 	var x = repl.evaluate(code, {
-		stdout: function(str) {
-			rawOutput += str;
-			if (str === '\n')
-				str = "<br>";
-			createLine(str);
-	  }
-	}).then(
-		function success(result) {
-			/* The evaluation succeeded. Result will contain `data`
-			 * or `error` depending on whether the code compiled and
-			 * ran or if there was an error.
-			 */
+	    stdout: function(str) {
+	    	rawOutput += str;
+	    	if(str === '\n') {
+	    		str = "<br>";
+	    	}
+	    	createLine(str);
+	    }
+	 }).then(
+	   function success(result) {
+	     // The evaluation succeeded. Result will contain `data` or `error`
+	     // depending on whether the code compiled and ran or if there was an
+	     // error.
 
-			var data = result.error ? result.error : rawOutput;
-			var output;
-			console.log(data);
 
-			output = generateOutput(data);
+	      var data = result.error ? result.error : rawOutput;
 
-		  // Need to know correctness for moving on to next lesson
-		  if (output.correct)
-		  	console.log("You are correct");
-		  else
-		  	console.log("Code is wrong");
+	      var output = generateOutput(code, data);
 
-		  $('div#feedback').html(output.output);
-		},
+	      // Need to know correctness for moving on to next lesson
+	      if (output.correct)
+	        console.log("You are correct");
+	      else
+	        console.log("Code is wrong");
 
-	function error(error) {
-	 // There was an error connecting to the service :(
-	 console.error('Error connecting to repl.it');
-	});
+	      $('div#feedback').html(output.output);
+	   },
+	   function error(error) {
+	     // There was an error connecting to the service :(
+	     console.error('Error connecting to repl.it');
+	   }
+	 );
 	inputTimeout(500);
 }
 

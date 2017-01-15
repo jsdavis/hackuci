@@ -2,6 +2,7 @@ function init_lesson(num) {
   setLesson(num);
 
   console.log(getSteps());
+  $('span#title').html(getLessonTitle());
   $('div#steps').html(getSteps());
   $('div#editor').text(getSkeleton());
 }
@@ -33,4 +34,16 @@ function generateOutput(output) {
 		result.output = getSuccessMessage();
 
 	return result;
+}
+
+function next_lesson() {
+	var nextLessonNum = getLessonNum() + 1;
+	if (nextLessonNum > getNumberOfLessons()) {
+		setLesson(0);
+		return;
+	}
+	else {
+		setLesson(nextLessonNum);
+		return;
+	}
 }

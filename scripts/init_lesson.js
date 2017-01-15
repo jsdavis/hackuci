@@ -25,14 +25,16 @@ function generateOutput(output) {
 		});
 
 		result.output = "";
+		var begEz = false;
 		errors.forEach(function(err) {
 			result.output += getExceptionFeedback()[err] + "<br>";
+			begEz = true;
 		});
 
-		if (!result.output && !_.includes(output.toLowerCase(), 'traceback')) {
+		if (!begEz && !_.includes(output.toLowerCase(), 'traceback')) {
 			result.output = "Not quite! Try again.";
 		}
-		else {
+		else if(!begEz) {
 			result.output = output;
 		}
 

@@ -1,13 +1,13 @@
 function init_lesson(num) {
   setLesson(num);
 
-  console.log(getSteps());
   $('span#title').html(getLessonTitle());
   $('div#steps').html(getSteps());
   $('div#feedback').empty();
   $('div#console').empty();
 
   session.getDocument().setValue(getSkeleton());
+  setFullTips(_.merge({}, getLangTips(), getLessonTips()));
 }
 
 function generateOutput(output) {
@@ -52,3 +52,5 @@ function next_lesson() {
 		return;
 	}
 }
+
+init_lesson(0);

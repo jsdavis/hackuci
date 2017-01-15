@@ -7,8 +7,8 @@ var python_tips = {
     "==" : "Single '=' <em>assigns</em> a value, while a double '==' <em>compares</em> values<hr>'==' is the same as saying 'is equal to' in English"
 	},
 	"lesson": {
-		"1": {
-			"x" : "This x called a variable. Variables hold values that are assigned to them. In this lesson, your are assigning a number for this variable to hold."
+		"2": {
+			"x" : "This <b>x</b> is called a variable. Variables hold values that are assigned to them with the <b>=</b> operator.<hr> In this lesson, you are assigning a number for this variable <b>x</b> to hold."
 		}
 	}
 }

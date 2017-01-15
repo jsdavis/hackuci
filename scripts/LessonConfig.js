@@ -5,6 +5,7 @@ lessons = lessons[window.lesson_lang]
 var lesson = lessons[0];
 
 tooltips = tooltips[window.lesson_lang];
+var tips = tooltips.language;
 
 function setLesson(num) {
 	lesson = lessons[num];
@@ -58,4 +59,12 @@ function getLangTips() {
 
 function getLessonTips() {
 	return tooltips.lesson[getLessonNum()];
+}
+
+function setFullTips(tools) {
+	tips = tools;
+}
+
+function getFullTips() {
+	return tips;
 }

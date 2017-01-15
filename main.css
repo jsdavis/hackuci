@@ -1,3 +1,36 @@
+
+
+body {
+	background: #141414;
+}
+
+.navbar {
+	height: 50px;
+}
+
+ul.nav {
+	display: inline-block;
+	height: 100%;
+	text-align: right;
+}
+
+ul.nav a {
+	padding-top: 5px;
+	text-align: center;
+	display: inline-block;
+	min-width: 100px;
+	max-width: 400px;
+	height: 100%;
+	transition: all .5s;
+	color: #e0e0e0;
+}
+
+ul.nav a:hover {
+	background: #8b9e63;
+	text-decoration: none;
+}
+
+
 .title {
 
 }
@@ -13,8 +46,14 @@
 }
 
 .ugh {
-	height: 25%;
-	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2%;
+	border-top: solid 10px #8b9e63;
+	background: #232323;
+	height: 20%;
+	width: 90%;
+	border-radius: 10px;
 	overflow: auto;
 }
 
@@ -46,16 +85,20 @@
 }
 
 .sidebar {
-	top: 0px;
-	height: 100%;
-	background: red;
+	margin-top: 2%;
+	margin-right: 2%;
+	height: 90%;
+	background: #232323;
 	display: inline-block;
+	border-left: solid 10px #8b9e63;
+	z-index: 1000;
+	border-radius: 10px;
 }
 
 .steps {
 	width: 100%;
 	margin: 5% 15px;
-	background: blue;
+	background: url("https://s3.amazonaws.com/neopets_pictures/Layouts/Tiles/30w.png");
 	border-radius: 10px;
 	padding: 15px;
 	z-index: 5;
@@ -65,14 +108,16 @@
 .feedback {
 	width: 100%;
 	margin: 0% 15px 5% 15px;
-	background: white;
+	background: url("https://s3.amazonaws.com/neopets_pictures/Layouts/Tiles/30w.png");
 	border-radius: 10px;
 	padding: 15px;
 }
 
 .tips {
-	width: 100%;
-	margin: 0% 15px 5% 15px;
+	width: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5%;
 	background: none;
 }
 

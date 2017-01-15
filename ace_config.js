@@ -11,7 +11,7 @@ var editor = ace.edit("editor");
 var selection = editor.getSelection();
 var session = editor.getSession();
 
-editor.setTheme("ace/theme/solarized_dark");
+editor.setTheme("ace/theme/twilight");
 editor.setFontSize(16);
 session.setMode("ace/mode/" + language);
 

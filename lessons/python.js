@@ -1,4 +1,4 @@
-var lessons = [
+var python_lessons = [
 	{
 		"lesson" : {
 			"id" : 1,

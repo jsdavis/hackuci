@@ -1,0 +1,27 @@
+#editor {
+  width: 95%;
+  height: 100%;
+  font-color: black!important;
+}
+
+#tooltip {
+  position: absolute;
+  z-index: 100000;
+  opacity: 0.3;
+}
+
+#tooltip:hover {
+  opacity: 1.0;
+}
+
+.ace-twilight .ace_fold {
+  border-color: #e0e0e0!important;
+}
+
+.ace-twilight .ace_invalid.ace_illegal {
+  color: #e0e0e0!important;
+}
+
+.ace-twilight {
+  color: #e0e0e0!important;
+}

@@ -1,4 +1,9 @@
+window.lesson_lang = 'python';
+
+lessons = lessons[window.lesson_lang]
 var lesson = lessons[0];
+
+tooltips = tooltips[window.lesson_lang];
 
 function setLesson(num) {
 	lesson = lessons[num];
@@ -40,4 +45,12 @@ function getSuccessMessage() {
 
 function getExceptionFeedback() {
 	return lesson.lesson.exceptionFeedback;
+}
+
+function getLangTips() {
+	return tooltips.language;
+}
+
+function getLessonTips() {
+	return tooltips.lesson[getLessonNum()];
 }

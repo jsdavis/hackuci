@@ -34,7 +34,7 @@ function getExpectedResult() {
 	return lesson.lesson.expectedResult;
 }
 
-function getExpectedResult(successMessage) {
+function getSuccessMessage() {
 	return lesson.lesson.successMessage;
 }
 

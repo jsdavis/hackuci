@@ -30,8 +30,11 @@ selection.on("changeSelection", function() {
     });
 
     var screenPos = editor.getCursorPositionScreen();
-    var y = ((screenPos.row + 1) * $('div.ace_line').height()) + 4;
-    var x = $('div.ace_gutter-layer').width();
+    if (screenPos.column < 5)
+      screenPos.row += 1;
+
+    var y = screenPos.row * $('div.ace_line').height();
+    var x = $('div.ace_gutter-layer').width() - 14;
     $('div#tooltip').css("left", x).css("top", y);
   }
 

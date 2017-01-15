@@ -7,7 +7,7 @@ var python_lessons = [
 			"Type the following into the text editor: print('Hello World!')",
 			"Test your finished work by clicking the 'Run' button!"
 			],
-			"skeleton": "#TYPE YOUR CODE HERE\n",
+			"skeleton": "# Type your code in the line below\n",
 			"expectedResult": /hello\s+world!*/i,
 			"successMessage": "Congratulations! You can now move onto the next lesson. Click the 'Next Lesson' button.",
 			"exceptionFeedback": {
@@ -25,7 +25,7 @@ var python_lessons = [
 			"Try printing x now: print(x)",
 			"Test your finished work by clicking the 'Run' button!"
 			],
-			"skeleton": "x = ",
+			"skeleton": "# Assign a value to x below!\nx = ",
 			"expectedResult": "",
 			"successMessage": "Congratulations! You can now move onto the next lesson. Click the 'Next Lesson' button.",
 			"exceptionFeedback": {

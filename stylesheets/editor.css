@@ -10,11 +10,16 @@
   z-index: 100000;
   opacity: 0.3;
   max-width: 60%;
+  font-family: Monaco, Menlo, "Ubuntu Mono", Consolas, source-code-pro, monospace;
   font-weight: 400;
 }
 
 #tooltip:hover {
   opacity: 1.0;
+}
+
+#tooltip .card {
+  background-color: #d3a75e !important;
 }
 
 .ace-twilight .ace_fold {

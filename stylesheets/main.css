@@ -2,7 +2,8 @@
 
 body {
 	background: #141414;
-	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	font-family: "Oxygen", sans-serif;
+	font-weight: 700;
 }
 
 .navbar {
@@ -33,6 +34,7 @@ ul.nav a:hover {
 
 
 ul.nav #title {
+	font-weight: 700;
 }
 
 .code {
@@ -59,7 +61,9 @@ ul.nav #title {
 
 #console {
 	white-space: pre-line;
-	color: #e0e0e0;;
+	color: #e0e0e0;
+	font-family: Monaco, Menlo, "Ubuntu Mono", Consolas, source-code-pro, monospace !important;
+	font-weight: 400;
 }
 
 .line {
@@ -77,9 +81,9 @@ ul.nav #title {
 	background: none;
 	outline: none;
 	resize: none;
-	overflow: hidden;	
+	overflow: hidden;
 }
- 
+
 .overallWrapper {
 	height: 100%;
 	width: 100%;

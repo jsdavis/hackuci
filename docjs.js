@@ -59,11 +59,9 @@ async function inputTimeout(t) {
 	}
 }
 
-$(document).ready(function() {
-	$("#input").attr("readonly", "true");
-	$("#input").on("keydown", function(e) {
-		autosize(this);
-	});
+$("#input").attr("readonly", "true");
+$("#input").on("keydown", function(e) {
+  autosize(this);
 });
 
 function autosize(el) {
@@ -73,18 +71,18 @@ function autosize(el) {
 	el.style.height = el.scrollHeight + 'px';
 }
 
-console.log("???");
 var token = { time_created: 1484390026000,
   msg_mac: 'pfMbpHa9jM0Pi1k11euqEnrFjVrSEKDu648jtNt/Lpw=' };
 var repl = new ReplitClient('api.repl.it', 80, 'python3', token);
 
 repl.connect().then(
-	function() {
-		console.log("Connection successful");
-	},
-	function() {
-		console.log("Connection failed");
-	})
+  function() {
+    console.log("Connection successful");
+  },
+  function() {
+    console.log("Connection failed");
+  }
+);
 
 function run() {
 	// get string from editor
@@ -119,11 +117,19 @@ function run() {
 	     // The evaluation succeeded. Result will contain `data` or `error`
 	     // depending on whether the code compiled and ran or if there was an
 	     // error.
-	     if (result.error) {
-	       console.log('Error:', result.error);
-	     } else {
-	       console.log('Result', result.data);
-	     }
+
+
+	      var data = result.error ? result.error : result.data;
+
+	      var output = generateOutput(data);
+
+	      // Need to know correctness for moving on to next lesson
+	      if (output.correct)
+	        console.log("You are correct");
+	      else
+	        console.log("Code is wrong");
+
+	      $('div#feedback').html(output.output);
 	   },
 	   function error(error) {
 	     // There was an error connecting to the service :(
@@ -139,4 +145,5 @@ function run() {
 			i++;
 		}
 	}*/
+  //$("#input").attr("readonly", "false");
 }

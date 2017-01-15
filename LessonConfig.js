@@ -34,14 +34,10 @@ function getExpectedResult() {
 	return lesson.lesson.expectedResult;
 }
 
-function getExpectedResult(successMessage) {
+function getSuccessMessage() {
 	return lesson.lesson.successMessage;
 }
 
-function getException() {
-	return lesson.lesson.exceptionFeedback.exception;
-}
-
-function getSyntaxError() {
-	return lesson.lesson.exceptionFeedback.syntaxError;
+function getExceptionFeedback() {
+	return lesson.lesson.exceptionFeedback;
 }

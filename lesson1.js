@@ -9,7 +9,7 @@ var lessons = [
 			"Test your finished work by clicking the 'Run' button!"
 			],
 			"skeleton": "#TYPE YOUR CODE HERE\n",
-			"expectedResult": "Hello World!",
+			"expectedResult": /hello\s+world!*/i,
 			"successMessage": "Congratulations! You can now move onto the next lesson. Click the 'Next Lesson' button.",
 			"exceptionFeedback": {
 				"exception": "Oops! Looks like something is wrong.",

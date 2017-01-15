@@ -1,4 +1,4 @@
-var python = {
+var python_tips = {
 	"language" : {
 		"#" : "Every line that starts with # is a comment.<br>Comments don't execute any code, and exist for clarification",
 		"print" : "<em>print</em> is a function in Python. When it is run, everything between the parentheses <b>()</b> after print is printed out below. The space below is called the console."

@@ -1,7 +1,6 @@
 /* TODO: Get config values from JSON */
 var language = getLessonLanguage().toLowerCase();
-var tooltips = python.language;
-var keywords = Object.keys(tooltips);
+var keywords = Object.keys(getLangTips());
 
 // Initialize the lesson
 init_lesson(0);
@@ -25,7 +24,7 @@ selection.on("changeSelection", function() {
       '<div class="card"><div id="tip-body" style="margin: 1px 5px"><b>!</b></div></div>');
 
     $('div#tooltip').hover(function() {
-      $(this).find('div#tip-body').html(tooltips[txt])
+      $(this).find('div#tip-body').html(getLangTips()[txt])
     }, function() {
       $(this).find('div#tip-body').html('<b>!</b>');
     });

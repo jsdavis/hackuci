@@ -60,4 +60,8 @@ function next_lesson() {
 	}
 }
 
+function revert() {
+	init_lesson(getLessonNum() - 1);
+}
+
 init_lesson(0);

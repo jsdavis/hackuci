@@ -91,7 +91,8 @@ function run() {
 	var code = session.getDocument().getValue();
 
 	// get count
-	count = (code.match('input\(.*\)') || []).length;
+	var re = /input\(.*\)/g
+	count = (code.match(re) || []).length;
 	i = 0;
 	console.log("count: " + count);
 

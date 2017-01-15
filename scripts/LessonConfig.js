@@ -26,10 +26,10 @@ function getLessonTitle() {
 }
 
 function getSteps() {
-	var stepsString = "<u>Steps:</u> <br>"
+	var stepsString = '<div class="text-center" style="font-size: 18px">Steps</div><hr>'
 	var n = 1;
 	for (x in lesson.lesson.steps) {
-		stepsString += n + ". " + lesson.lesson.steps[x] + "<br>";
+		stepsString += n + ". " + lesson.lesson.steps[x] + "<hr>";
 		n++;
 	}
 	return stepsString;

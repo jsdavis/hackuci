@@ -2,7 +2,7 @@
 
 body {
 	background: #141414;
-	font-family: “Century Gothic”, CenturyGothic, AppleGothic, sans-serif;
+	font-family: "Oxygen", sans-serif;
 }
 
 .navbar {
@@ -59,7 +59,8 @@ ul.nav #title {
 
 #console {
 	white-space: pre-line;
-	color: #e0e0e0;;
+	color: #e0e0e0;
+	font-family: Monaco, Menlo, "Ubuntu Mono", Consolas, source-code-pro, monospace !important;
 }
 
 .line {
@@ -77,9 +78,9 @@ ul.nav #title {
 	background: none;
 	outline: none;
 	resize: none;
-	overflow: hidden;	
+	overflow: hidden;
 }
- 
+
 .overallWrapper {
 	height: 100%;
 	width: 100%;

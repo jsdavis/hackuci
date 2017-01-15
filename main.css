@@ -2,6 +2,7 @@
 
 body {
 	background: #141414;
+	font-family: “Century Gothic”, CenturyGothic, AppleGothic, sans-serif;
 }
 
 .navbar {
@@ -31,8 +32,7 @@ ul.nav a:hover {
 }
 
 
-.title {
-
+ul.nav #title {
 }
 
 .code {
@@ -59,6 +59,7 @@ ul.nav a:hover {
 
 #console {
 	white-space: pre-line;
+	color: #e0e0e0;;
 }
 
 .line {
@@ -98,7 +99,8 @@ ul.nav a:hover {
 .steps {
 	width: 100%;
 	margin: 5% 15px;
-	background: url("https://s3.amazonaws.com/neopets_pictures/Layouts/Tiles/30w.png");
+	/*background: url("https://s3.amazonaws.com/neopets_pictures/Layouts/Tiles/30w.png");*/
+	background-color: #d3a75e;
 	border-radius: 10px;
 	padding: 15px;
 	z-index: 5;
@@ -108,12 +110,21 @@ ul.nav a:hover {
 .feedback {
 	width: 100%;
 	margin: 0% 15px 5% 15px;
-	background: url("https://s3.amazonaws.com/neopets_pictures/Layouts/Tiles/30w.png");
+	/*background: url("https://s3.amazonaws.com/neopets_pictures/Layouts/Tiles/30w.png");*/
+	background-color: #d3a75e;
 	border-radius: 10px;
 	padding: 15px;
 }
 
-.tips {
+.run {
+	width: 150px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5%;
+	background: none;
+}
+
+.nextLesson {
 	width: 200px;
 	margin-left: auto;
 	margin-right: auto;
@@ -122,13 +133,14 @@ ul.nav a:hover {
 }
 
 .bs {
-	background: black;
+	background: #8b9e63;
 	display: block;
 	border-radius: 10px;
 	text-align: center;
 }
 
 .bs:hover {
+	cursor: pointer;
 	opacity: .5;
 	transition: all .5s;
 }

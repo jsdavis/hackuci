@@ -8,6 +8,10 @@ function getLessonNum() {
 	return lesson.lesson.id;
 }
 
+function getNumberOfLessons() {
+	return lessons.length;
+}
+
 function getLessonLanguage() {
 	return lesson.lesson.language;
 }

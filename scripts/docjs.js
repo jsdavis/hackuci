@@ -1,16 +1,15 @@
-/*var jqconsole = $('#console').jqconsole('Hi\n', '>>>');
-var startPrompt = function () {
-          // Start the prompt with history enabled.
-          jqconsole.Prompt(true, function (input) {
-            // Output input with the class jqconsole-output.
-            jqconsole.Write(input + '\n', 'jqconsole-output');
-            // Restart the prompt.
-            startPrompt();
-          });
-        };
-        startPrompt();
-*/
+/* Initialize editor ******************************************/
 
+var editor = ace.edit("editor");
+var selection = editor.getSelection();
+var session = editor.getSession();
+
+editor.setTheme("ace/theme/twilight");
+editor.setFontSize(16);
+session.setMode("ace/mode/" + getLessonLanguage());
+
+
+/**************************************************************/
 var count;
 var i;
 var rawOutput = "";
@@ -49,14 +48,13 @@ function sleep(ms) {
 
 async function inputTimeout(t) {
   await sleep(t);
-  if(count > 0) {
-		 console.log("halp");
-		 var inp = document.createElement("textarea");
-		 $(inp).attr("id", "input");
-		 $(inp).attr("class", "txtarea");
-		 $(inp).attr("onkeypress", "handle(event)");
-		 $("#console").append(inp.outerHTML);
-
+  if (count > 0) {
+		console.log("halp");
+		var inp = document.createElement("textarea");
+		$(inp).attr("id", "input");
+		$(inp).attr("class", "txtarea");
+		$(inp).attr("onkeypress", "handle(event)");
+		$("#console").append(inp.outerHTML);
 	}
 }
 
@@ -90,64 +88,49 @@ function run() {
 
 	// get string from editor
 	var code = session.getDocument().getValue();
-	
+
 	// get count
 	count = (code.match('input\(.*\)') || []).length;
 	i = 0;
 	console.log("count: " + count);
 
 	// activate console input if the program takes in input
-	if(count > 0) {
+	if (count > 0)
 		$("#input").removeAttr("readonly");
-	}
 
 	// clears console text at each run
 	document.getElementById('console').innerHTML = ">>  ";
 
 	var x = repl.evaluate(code, {
-	                stdout: function(str) {
-	                	rawOutput += str;
-	                	if(str === '\n') {
-	                		str = "<br>";
-	                	}
-	                	createLine(str);
+		stdout: function(str) {
+			rawOutput += str;
+			if (str === '\n')
+				str = "<br>";
+			createLine(str);
+	  }
+	}).then(
+		function success(result) {
+			/* The evaluation succeeded. Result will contain `data`
+			 * or `error` depending on whether the code compiled and
+			 * ran or if there was an error.
+			 */
 
-	                	//document.getElementById("console").insertBefore(line, document.getElementById("console").firstChild);
-	                    //line.innerHTML += str;
-	                
-	                }
-	             }).then(
-	   function success(result) {
-	     // The evaluation succeeded. Result will contain `data` or `error`
-	     // depending on whether the code compiled and ran or if there was an
-	     // error.
+			var data = result.error ? result.error : rawOutput;
 
+		  var output = generateOutput(data);
 
-	      var data = result.error ? result.error : rawOutput;
+		  // Need to know correctness for moving on to next lesson
+		  if (output.correct)
+		  	console.log("You are correct");
+		  else
+		  	console.log("Code is wrong");
 
-	      var output = generateOutput(data);
+		  $('div#feedback').html(output.output);
+		},
 
-	      // Need to know correctness for moving on to next lesson
-	      if (output.correct)
-	        console.log("You are correct");
-	      else
-	        console.log("Code is wrong");
-
-	      $('div#feedback').html(output.output);
-	   },
-	   function error(error) {
-	     // There was an error connecting to the service :(
-	     console.error('Error connecting to repl.it');
-	   }
-	 );
+	function error(error) {
+	 // There was an error connecting to the service :(
+	 console.error('Error connecting to repl.it');
+	});
 	inputTimeout(500);
-	
-	/*
-	document.querySelector('#test').onclick = function() {
-		if(i < count) {
-			repl.write("hi\n");
-			i++;
-		}
-	}*/
-  //$("#input").attr("readonly", "false");
 }

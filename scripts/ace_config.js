@@ -1,18 +1,7 @@
-/* TODO: Get config values from JSON */
-var language = getLessonLanguage().toLowerCase();
 var keywords = Object.keys(getLangTips());
 
 // Initialize the lesson
 init_lesson(0);
-
-// Initialize ace editor
-var editor = ace.edit("editor");
-var selection = editor.getSelection();
-var session = editor.getSession();
-
-editor.setTheme("ace/theme/twilight");
-editor.setFontSize(16);
-session.setMode("ace/mode/" + language);
 
 // Custom tooltip behavior
 selection.on("changeSelection", function() {

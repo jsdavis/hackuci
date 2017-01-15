@@ -4,7 +4,10 @@ function init_lesson(num) {
   console.log(getSteps());
   $('span#title').html(getLessonTitle());
   $('div#steps').html(getSteps());
-  $('div#editor').text(getSkeleton());
+  $('div#feedback').empty();
+  $('div#console').empty();
+
+  session.getDocument().setValue(getSkeleton());
 }
 
 function generateOutput(output) {

@@ -12,20 +12,32 @@
 	display: inline-block;
 }
 
-#console {
+.ugh {
 	height: 25%;
 	width: 100%;
 	overflow: auto;
 }
 
-#input {
-	width: 100%;
+#console {
+	white-space: pre-line;
+}
+
+.line {
+	margin: 0px!important;
+	padding: 0px!important;
+}
+
+.txtarea {
+	color: green;
+	font-size: 13pt;
+	font-style: inherit;
+	margin-right: 0px;
 	height: 1.2em;
 	border: none;
 	background: none;
 	outline: none;
 	resize: none;
-	overflow: hidden;
+	overflow: hidden;	
 }
  
 .overallWrapper {

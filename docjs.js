@@ -1,11 +1,62 @@
+/*var jqconsole = $('#console').jqconsole('Hi\n', '>>>');
+var startPrompt = function () {
+          // Start the prompt with history enabled.
+          jqconsole.Prompt(true, function (input) {
+            // Output input with the class jqconsole-output.
+            jqconsole.Write(input + '\n', 'jqconsole-output');
+            // Restart the prompt.
+            startPrompt();
+          });
+        };
+        startPrompt();
+*/
+
+var count;
+var i;
+
+function createLine(str) {
+	var re = /\n/g;
+	console.log('before: ' + str);
+	str.replace(/\n/g,'cry');
+	console.log('after: ' + str);
+	var el = document.createElement("p");
+	$(el).css("display", "inline");
+	$(el).attr("class", "line");
+	el.innerHTML = str;
+	document.getElementById("console").appendChild(el);
+
+}
+
+function handle(e) {
+	if(e.keyCode === 13){
+		console.log("value: " + document.getElementById("input").value );
+		repl.write(document.getElementById("input").value + "\n");
+		$("#input").attr("readonly", "true");
+		$("#input").attr("id", "none");
+		createLine("<br>");
+		//$("#input").destroy();
+		i++;
+		if(i < count) {
+			inputTimeout(500);
+		}
+	}
+}
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function demo() {
-  console.log('Taking a break...');
-  await sleep(2000);
-  console.log('Two second later');
+async function inputTimeout(t) {
+  await sleep(t);
+  if(count > 0) {
+		 console.log("halp");
+		 var inp = document.createElement("textarea");
+		 $(inp).attr("id", "input");
+		 $(inp).attr("class", "txtarea");
+		 $(inp).attr("onkeypress", "handle(event)");
+		 $("#console").append(inp.outerHTML);
+
+	}
 }
 
 $(document).ready(function() {
@@ -17,6 +68,7 @@ $(document).ready(function() {
 
 function autosize(el) {
 	el.style.overflow = 'hidden';
+	el.style.width = 'auto';
 	el.style.height = 'auto';
 	el.style.height = el.scrollHeight + 'px';
 }
@@ -35,17 +87,38 @@ repl.connect().then(
 	})
 
 function run() {
-	//$("#input").attr("readonly", "false");
-	var x = repl.evaluate(document.getElementById("codeTxt").value, {
-	                stdout: function(str) {	
-	                    document.getElementById('console').innerHTML += str + '\n';
+	// get string from editor
+	var code = document.getElementById("codeTxt").value;
+	
+	// get count
+	count = (code.match('input\(.*\)') || []).length;
+	i = 0;
+	console.log("count: " + count);
+
+	// activate console input if the program takes in input
+	if(count > 0) {
+		$("#input").removeAttr("readonly");
+	}
+
+	// clears console text at each run
+	document.getElementById('console').innerHTML = ">>  ";
+
+	var x = repl.evaluate(code, {
+	                stdout: function(str) {
+	                	if(str === '\n') {
+	                		str = "<br>";
+	                	}
+	                	createLine(str);
+
+	                	//document.getElementById("console").insertBefore(line, document.getElementById("console").firstChild);
+	                    //line.innerHTML += str;
+	                
 	                }
 	             }).then(
 	   function success(result) {
 	     // The evaluation succeeded. Result will contain `data` or `error`
 	     // depending on whether the code compiled and ran or if there was an
 	     // error.
-	     console.log(result)
 	     if (result.error) {
 	       console.log('Error:', result.error);
 	     } else {
@@ -57,9 +130,13 @@ function run() {
 	     console.error('Error connecting to repl.it');
 	   }
 	 );
-	  demo();
-	  console.log(x);
+	inputTimeout(500);
+	
+	/*
 	document.querySelector('#test').onclick = function() {
-		repl.write("hi\n");
-	}
+		if(i < count) {
+			repl.write("hi\n");
+			i++;
+		}
+	}*/
 }

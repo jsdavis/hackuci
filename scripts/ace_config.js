@@ -1,10 +1,7 @@
-var keywords = Object.keys(getLangTips());
-
-// Initialize the lesson
-init_lesson(0);
-
 // Custom tooltip behavior
 selection.on("changeSelection", function() {
+  var tips = getFullTips();
+  var keywords = Object.keys(tips);
   var txt = session.getTextRange(selection.getRange()).toLowerCase();
 
   // If selection is a known keyword, show the tooltip
@@ -13,7 +10,7 @@ selection.on("changeSelection", function() {
       '<div class="card"><div id="tip-body" style="margin: 1px 5px"><b>!</b></div></div>');
 
     $('div#tooltip').hover(function() {
-      $(this).find('div#tip-body').html(getLangTips()[txt])
+      $(this).find('div#tip-body').html(tips[txt])
     }, function() {
       $(this).find('div#tip-body').html('<b>!</b>');
     });

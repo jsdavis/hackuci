@@ -4,6 +4,7 @@ var editor = ace.edit("editor");
 var selection = editor.getSelection();
 var session = editor.getSession();
 
+editor.$blockScrolling = Infinity;
 editor.setTheme("ace/theme/twilight");
 editor.setFontSize(16);
 session.setMode("ace/mode/" + getLessonLanguage());
@@ -136,3 +137,38 @@ function run() {
 	});
 	inputTimeout(500);
 }
+
+/*
+selection.on("changeSelection", selectionChangeHandler);
+
+function selectionChangeHandler() {
+	var tips = getFullTips();
+	var keywords = Object.keys(tips);
+	console.log(tips);
+
+	var txt = session.getTextRange(selection.getRange()).toLowerCase();
+
+	// If selection is a known keyword, show the tooltip
+	if (_.includes(keywords, txt)) {
+		$('div#tooltip').append(
+		  '<div class="card"><div id="tid-body" style="margin: 1px 5px"><b>!</b></div></div>');
+
+		$('div#tooltip').hover(function() {
+			$(this).find('div#tip-body').html(tips[txt])
+		}, function() {
+			$(this).find('div#tip-body').html('<b>!</b>');
+		});
+
+		var screenPos= editor.getCursorPositionScreen();
+		if (screenPos.column < 5)
+			screenPos.row += 1;
+
+		var y = screenPos.row * $('div.ace_line').height();
+		var x = $('div.ace_gutter-layer').width() - 14;
+		$('div#tooltip').css("left", x).css("top", y);
+	}
+
+	// Make sure tooltip is empty
+	else
+		$('div#tooltip').empty();
+}*/

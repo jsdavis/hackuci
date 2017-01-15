@@ -143,6 +143,8 @@ ul.nav #title {
 	display: block;
 	border-radius: 10px;
 	text-align: center;
+	font-family: "Oxygen", sans-serif;
+	font-weight: 700;
 }
 
 .bs:hover {

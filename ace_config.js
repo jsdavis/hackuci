@@ -1,6 +1,6 @@
 /* TODO: Get config values from JSON */
 var language = getLessonLanguage().toLowerCase();
-var tooltips = {'function': 'function tooltip'};
+var tooltips = python.language;
 var keywords = Object.keys(tooltips);
 
 // Initialize the lesson

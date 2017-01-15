@@ -13,6 +13,7 @@ var startPrompt = function () {
 
 var count;
 var i;
+var rawOutput = "";
 
 function createLine(str) {
 	var re = /\n/g;
@@ -103,6 +104,7 @@ function run() {
 
 	var x = repl.evaluate(code, {
 	                stdout: function(str) {
+	                	rawOutput += str;
 	                	if(str === '\n') {
 	                		str = "<br>";
 	                	}
@@ -119,7 +121,7 @@ function run() {
 	     // error.
 
 
-	      var data = result.error ? result.error : result.data;
+	      var data = result.error ? result.error : rawOutput;
 
 	      var output = generateOutput(data);
 

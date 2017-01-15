@@ -7,6 +7,7 @@ function init_lesson(num) {
 }
 
 function generateOutput(output) {
+	console.log("HERE: " + output + "\n")
 	var result = {};
 
 	var expected = getExpectedResult();

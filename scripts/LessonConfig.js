@@ -1,6 +1,7 @@
 window.lesson_lang = 'python';
 
 lessons = lessons[window.lesson_lang]
+
 var lesson = lessons[0];
 
 tooltips = tooltips[window.lesson_lang];
@@ -18,7 +19,7 @@ function getNumberOfLessons() {
 }
 
 function getLessonLanguage() {
-	return lesson.lesson.language;
+	return window.lesson_lang;
 }
 
 function getLessonTitle() {

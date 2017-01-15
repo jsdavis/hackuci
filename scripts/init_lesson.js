@@ -40,10 +40,12 @@ function next_lesson() {
 	var nextLessonNum = getLessonNum() + 1;
 	if (nextLessonNum > getNumberOfLessons()) {
 		setLesson(0);
+		console.log("Lesson changed to 0")
 		return;
 	}
 	else {
-		setLesson(nextLessonNum);
+		setLesson(nextLessonNum - 1);
+		console.log("Lesson changed to " + nextLessonNum);
 		return;
 	}
 }

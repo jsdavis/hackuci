@@ -2,7 +2,6 @@ var python_lessons = [
 	{
 		"lesson" : {
 			"id" : 1,
-			"language" : "Python",
 			"title": "Let's write your first Python program: Hello World!",
 			"steps": [
 			"Type the following into the text editor: print('Hello World!')",
@@ -20,7 +19,6 @@ var python_lessons = [
 	{
 		"lesson" : {
 			"id" : 2,
-			"language" : "Python",
 			"title": "Let's learn about variables!",
 			"steps": [
 			"Here we have a variable, x, that needs to be assigned a number. Finish the code by typing any integer to assign to x.",

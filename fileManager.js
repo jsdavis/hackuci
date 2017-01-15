@@ -11,4 +11,16 @@ function saveAsFile() {
 	console.log(dlLink.outerHTML);
 	document.body.appendChild(dlLink);
 	dlLink.click();
-}    
+}
+	
+function openFile() {
+	var file = document.getElementById("inlineFileInput").files[0];
+
+	var reader = new FileReader();
+	reader.onload = function(fileLoadedEvent) {
+		var txt = fileLoadedEvent.target.result;
+		session.getDocument().setValue(txt);
+		console.log(txt);
+	};
+	reader.readAsText(file, "UTF-8");
+}

@@ -10,15 +10,40 @@ function init_lesson(num) {
   setFullTips(_.merge({}, getLangTips(), getLessonTips()));
 }
 
-function generateOutput(output) {
-	console.log("HERE: " + output + "\n");
+function generateOutput(input, output, syntaxErr) {
+	console.log("HERE: " + output + "\n")
 	var result = {};
 
-	var expected = getExpectedResult();
-	result.correct = expected instanceof RegExp ?
-		expected.test(output) : expected === output;
+	if (lesson.lesson.evaluateCode != null) {
+		var lines = input.split("\n");
 
-	if (!result.correct) {
+		// Remove empty lines
+		// match line i with regex i for all i
+		_.remove(lines, function(line) {
+			return (_.startsWith(line, '#') || line=="");
+		});
+
+		var codeEval = true;
+
+		var evalLength = lesson.lesson.evaluateCode.length;
+		for (var i = 0; i < evalLength; i++) {
+			if (!lesson.lesson.evaluateCode[i].test(lines[i])) {
+				codeEval = false;
+				break;
+			}
+		}
+		result.correct = codeEval;
+	}
+
+	if (getExpectedResult() != null) {
+
+		var expected = getExpectedResult();
+		result.correct = expected instanceof RegExp ?
+			expected.test(output) : expected === output; 
+
+	}
+	if (syntaxErr) {
+
 		var errors = Object.keys(getExceptionFeedback());
 		_.remove(errors, function(err) {
 			return !_.includes(output.toLowerCase(), err.toLowerCase());
@@ -49,7 +74,7 @@ function generateOutput(output) {
 function next_lesson() {
 	var nextLessonNum = getLessonNum() + 1;
 	if (nextLessonNum > getNumberOfLessons()) {
-		setLesson(0);
+		init_lesson(0);
 		console.log("Lesson changed to 0")
 		return;
 	}

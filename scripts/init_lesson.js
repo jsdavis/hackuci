@@ -12,29 +12,29 @@ function init_lesson(num) {
 
 
 function generateOutput(input, output, syntaxErr) {
-	console.log("HERE: " + output + "\n");
+	console.log("HERE: " + output + "\n")
 	var result = {};
 
-	var expected = getExpectedResult();
-	result.correct = expected instanceof RegExp ?
-		expected.test(output) : expected === output;
+	if (lesson.lesson.evaluateCode != null) {
+		var lines = input.split("\n");
 
-	// Remove empty lines
-	// match line i with regex i for all i
-	_.remove(lines, function(line) {
-		return (_.startsWith(line, '#') || line=="");
-	});
+		// Remove empty lines
+		// match line i with regex i for all i
+		_.remove(lines, function(line) {
+			return (_.startsWith(line, '#') || line=="");
+		});
 
-	var codeEval = true;
+		var codeEval = true;
 
-	var evalLength = lesson.lesson.evaluateCode.length;
-	for (var i = 0; i < evalLength; i++) {
-		if (!lesson.lesson.evaluateCode[i].test(lines[i])) {
-			codeEval = false;
-			break;
+		var evalLength = lesson.lesson.evaluateCode.length;
+		for (var i = 0; i < evalLength; i++) {
+			if (!lesson.lesson.evaluateCode[i].test(lines[i])) {
+				codeEval = false;
+				break;
+			}
 		}
+		result.correct = codeEval;
 	}
-	result.correct = codeEval;
 
 	if (getExpectedResult() != null) {
 
@@ -52,14 +52,16 @@ function generateOutput(input, output, syntaxErr) {
 		});
 
 		result.output = "";
+		var begEz = false;
 		errors.forEach(function(err) {
 			result.output += getExceptionFeedback()[err] + "<br>";
+			begEz = true;
 		});
 
-		if (!result.output && !_.includes(output.toLowerCase(), 'traceback')) {
+		if (!begEz && !_.includes(output.toLowerCase(), 'traceback')) {
 			result.output = "Not quite! Try again.";
 		}
-		else {
+		else if(!begEz) {
 			result.output = output;
 		}
 
@@ -90,6 +92,10 @@ function prev_lesson() {
 		console.log("Lesson changed to " + prevLessonNum);
 		return;
 	}
+}
+
+function revert() {
+	init_lesson(getLessonNum() - 1);
 }
 
 init_lesson(0);

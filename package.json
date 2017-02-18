@@ -4,6 +4,7 @@
   "description": "In-browser code editor to teach programming",
   "main": "app.js",
   "dependencies": {
+    "bunyan": "^1.8.5",
     "express": "^4.14.1"
   },
   "devDependencies": {},

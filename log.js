@@ -1,4 +1,5 @@
 const bunyan = require('bunyan');
+const path = require('path');
 
 const log = bunyan.createLogger({
     name: 'app',
@@ -10,7 +11,7 @@ const log = bunyan.createLogger({
         },
         {
             level: 'error',
-            type: 'rotating-file'
+            type: 'rotating-file',
             path: path.join(__dirname, 'logs', 'error.log'),
             period: '1d',
             count: 7

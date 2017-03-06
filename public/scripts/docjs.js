@@ -71,9 +71,11 @@ function autosize(el) {
 	el.style.height = el.scrollHeight + 'px';
 }
 
-var token = { time_created: 1484390026000,
-  msg_mac: 'pfMbpHa9jM0Pi1k11euqEnrFjVrSEKDu648jtNt/Lpw=' };
-var repl = new ReplitClient('api.repl.it', 80, 'python3', token);
+var token = {
+	time_created: 1488782977000,
+  msg_mac: "er3S3ee78ksHnsxTM20fUT/rDchWoCx+tT/QUrdIp/Q="
+};
+  var repl = new ReplitClient('api.repl.it', 80, 'python3', token);
 
 repl.connect().then(
   function() {

@@ -10,7 +10,7 @@ editor.setFontSize(16);
 session.setMode("ace/mode/" + getLessonLanguage());
 
 
-/**************************************************************/
+/* Initialize console *****************************************/
 var count;
 var i;
 var rawOutput = "";
@@ -42,6 +42,8 @@ function handle(e) {
 		}
 	}
 }
+
+/**************************************************************/
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));

@@ -16,10 +16,6 @@ var i;
 var rawOutput = "";
 
 function createLine(str) {
-	var re = /\n/g;
-	console.log('before: ' + str);
-	str.replace(/\n/g,'cry');
-	console.log('after: ' + str);
 	var el = document.createElement("p");
 	$(el).css("display", "inline");
 	$(el).attr("class", "line");
@@ -28,6 +24,7 @@ function createLine(str) {
 
 }
 
+/* TODO: Handle input events on the server side
 function handle(e) {
 	if(e.keyCode === 13){
 		console.log("value: " + document.getElementById("input").value );
@@ -42,9 +39,11 @@ function handle(e) {
 		}
 	}
 }
+*/
 
 /**************************************************************/
 
+/* TODO: Reintroduce input capability
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -72,113 +71,32 @@ function autosize(el) {
 	el.style.height = 'auto';
 	el.style.height = el.scrollHeight + 'px';
 }
-
-var token = {
-	time_created: 1488782977000,
-  msg_mac: "er3S3ee78ksHnsxTM20fUT/rDchWoCx+tT/QUrdIp/Q="
-};
-  var repl = new ReplitClient('api.repl.it', 80, 'python3', token);
-
-repl.connect().then(
-  function() {
-    console.log("Connection successful");
-  },
-  function() {
-    console.log("Connection failed");
-  }
-);
+*/
 
 function run() {
-	rawOutput = "";
-
 	// get string from editor
 	var code = session.getDocument().getValue();
 
+	/* TODO: Reintroduce input capability
 	// get count
 	var re = /input\(.*\)/g
 	count = (code.match(re) || []).length;
 	i = 0;
-	console.log("count: " + count);
 
 	// activate console input if the program takes in input
 	if (count > 0)
 		$("#input").removeAttr("readonly");
+	*/
 
 	// clears console text at each run
 	document.getElementById('console').innerHTML = ">>  ";
 
-	var x = repl.evaluate(code, {
-	    stdout: function(str) {
-	    	rawOutput += str;
-	    	if(str === '\n') {
-	    		str = "<br>";
-	    	}
-	    	createLine(str);
-	    }
-	 }).then(
-	   function success(result) {
-	     // The evaluation succeeded. Result will contain `data` or `error`
-	     // depending on whether the code compiled and ran or if there was an
-	     // error.
+	$.post('/code', { "code": code }, data => {
+		var output = generateOutput(code, data.output, data.error);
+    // Need to know correctness for moving on to next lesson
+	  $('div#feedback').html(output.output);
+	  createLine(data.stdout);
+	});
 
-
-	      var data = result.error ? result.error : rawOutput;
-
-	      var error = false;
-
-	      if(result.error) {
-	      	error = true;
-	      }
-
-	      var output = generateOutput(code, data, error);
-
-	      // Need to know correctness for moving on to next lesson
-	      if (output.correct)
-	        console.log("You are correct");
-	      else
-	        console.log("Code is wrong");
-
-	      $('div#feedback').html(output.output);
-	   },
-	   function error(error) {
-	     // There was an error connecting to the service :(
-	     console.error('Error connecting to repl.it');
-	   }
-	 );
-	inputTimeout(500);
+	//inputTimeout(500);
 }
-
-/*
-selection.on("changeSelection", selectionChangeHandler);
-
-function selectionChangeHandler() {
-	var tips = getFullTips();
-	var keywords = Object.keys(tips);
-	console.log(tips);
-
-	var txt = session.getTextRange(selection.getRange()).toLowerCase();
-
-	// If selection is a known keyword, show the tooltip
-	if (_.includes(keywords, txt)) {
-		$('div#tooltip').append(
-		  '<div class="card"><div id="tid-body" style="margin: 1px 5px"><b>!</b></div></div>');
-
-		$('div#tooltip').hover(function() {
-			$(this).find('div#tip-body').html(tips[txt])
-		}, function() {
-			$(this).find('div#tip-body').html('<b>!</b>');
-		});
-
-		var screenPos= editor.getCursorPositionScreen();
-		if (screenPos.column < 5)
-			screenPos.row += 1;
-
-		var y = screenPos.row * $('div.ace_line').height();
-		var x = $('div.ace_gutter-layer').width() - 14;
-		$('div#tooltip').css("left", x).css("top", y);
-	}
-
-	// Make sure tooltip is empty
-	else
-		$('div#tooltip').empty();
-}*/

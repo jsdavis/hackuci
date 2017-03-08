@@ -35,6 +35,7 @@ app.post('/code', (req, res) => {
     // Evaluation succeeded without a connection error
     result => {
       res.send({
+        stdout: output,
         output: result.error ? result.error : output,
         error: Boolean(result.error),
         data: result.data
